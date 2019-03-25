@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LazyCComponent } from './lazy-c.component';
 import { RouterModule } from '@angular/router';
-import { UpgradeModule, downgradeComponent, setAngularJSGlobal  } from '@angular/upgrade/static';
+import {
+  UpgradeModule,
+  downgradeComponent,
+  setAngularJSGlobal
+} from '@angular/upgrade/static';
 import { setUpLocationSync } from '@angular/router/upgrade';
 
 import { module } from '../angularjs/angularjsapp';
@@ -10,13 +14,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularJSWrapperComponent } from './angularjs-wrapper.component';
 
-import * as rjs from 'requirejs';
+// import * as rjs from 'requirejs';
 import { HeaderModule } from '../header/header.module';
+import * as angular from 'angular';
 
-//  declare const angular: any;
+declare const requirejs: any;
 
 // this is neccesary if you want to use AngularJs style input variable in Angular
 // angular.module(module.name).directive('appRoot', downgradeComponent({component: AppComponent}));
+angular
+  .module(module.name)
+  .directive('appRoot', downgradeComponent({ component: LazyCComponent }));
 
 @NgModule({
   declarations: [LazyCComponent, AngularJSWrapperComponent],
@@ -38,10 +46,12 @@ export class LazyCModule {
   constructor(private upgrade: UpgradeModule) {}
 
   ngDoBootstrap() {
-    // rjs(['angular'], (angular) => {
-     // setAngularJSGlobal(angular);
-       setUpLocationSync(this.upgrade);
-       this.upgrade.bootstrap(document.body, [module.name]);
-   //  });
+    // requirejs(['angular', 'angularJsApp'], (angular, app) => {
+    // console.log(angular);
+    // setAngularJSGlobal(angular);
+
+    setUpLocationSync(this.upgrade);
+    this.upgrade.bootstrap(document.body, [module.name]);
+    //});
   }
 }

@@ -31,7 +31,8 @@
               "src/app/angularjs/directives/angularjs.css"
             ],
             "scripts": [
-              "src/app/angularjs/directives/angularjs.component.js"
+              "src/app/angularjs/directives/angularjs.component.js",
+              "node_modules/requirejs/require.js"
             ],
             "es5BrowserSupport": true
           },
