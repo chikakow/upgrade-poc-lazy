@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularJSWrapperComponent } from './angularjs-wrapper.component';
 
 import * as rjs from 'requirejs';
+import { HeaderModule } from '../header/header.module';
 
 //  declare const angular: any;
 
@@ -20,6 +21,7 @@ import * as rjs from 'requirejs';
 @NgModule({
   declarations: [LazyCComponent, AngularJSWrapperComponent],
   imports: [
+    HeaderModule,
     FormsModule,
     UpgradeModule,
     CommonModule,

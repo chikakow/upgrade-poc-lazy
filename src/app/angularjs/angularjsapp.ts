@@ -7,6 +7,17 @@ declare const angular: any;
 
 export const module = angular.module('AngularJSApp', ['ui.router']);
 
+// Header
+module.component('ngjsHeader', {
+  template: `
+  <div style="background-color: yellow">
+        <div><a href="/angular_a">Go to Angular A</a></div>
+        <div><a href="/angular_b">Go to Angular Lazy B</a></div>
+        <div><a href="/angular_c">Go to Angular Lazy C - not working</a></div>
+        <div><a href="/angularjs_a">Go to Angular JS Lazy A</a></div>
+        <div><a href="/angularjs_b">Go to Angular JS B</a></div>
+  </div>`
+});
 
 // Services
 module.service('stringService', () => {
@@ -23,7 +34,7 @@ module.service('notifyService', [
   (win, stringService) => {
     let msgs = [];
     return {
-      notify: (msg) => {
+      notify: msg => {
         msgs.push(msg);
         if (msgs.length === 3) {
           msgs.push(stringService.getString());
@@ -37,14 +48,8 @@ module.service('notifyService', [
 
 module.component('lazyJsA', {
   template: `
-  <div style="background-color: yellow">
-        <div>AngularJS Lazy A!</div>
-        <div><a href="/angular_a">Go to Angular A</a></div>
-        <div><a href="/angular_b">Go to Angular B</a></div>
-        <div><a href="/angular_c">Go to Angular C</a></div>
-        <div>Go to AngularJS A</div>
-        <div><a href="/angularjs_b">Go to Angular JS B</a></div>
-      </div>
+  AngularJs Lazy A!
+  <ngjs-header></ngjs-header>
     <div class="ng1">
     <br>
     <br>
@@ -56,9 +61,7 @@ module.component('lazyJsA', {
     If alert, then AngularJS Service in AngularJS working - no upgrade needed just link to the js file from angular.json</button>
     </div>
     `,
-  bindings: {
-
-  },
+  bindings: {},
   controller: ['notifyService', componentController]
 });
 
@@ -68,7 +71,7 @@ export function componentController(notifyService) {
   this.notifyMessage = msg => {
     notifyService.notify(msg);
   };
-  this.multi = (times) => {
+  this.multi = times => {
     console.log('hey', times, this.counter);
     this.counter = this.counter * times;
   };
@@ -85,14 +88,8 @@ module.config(($locationProvider, $stateProvider) => {
   $stateProvider.state('angularjs_b', {
     url: '/angularjs_b',
     template: `
-      <div style="background-color: yellow">
         <div>AngularJS Non-Lazy B!</div>
-        <div><a href="/angular_a">Go to Angular A</a></div>
-        <div><a href="/angular_b">Go to Angular B</a></div>
-        <div><a href="/angular_c">Go to Angular C</a></div>
-        <div><a href="/angularjs_a">Go to Angular JS A</a></div>
-        <div>Go to AngularJS B</div>
-      </div>
+        <ngjs-header></ngjs-header>
     `
   });
 
