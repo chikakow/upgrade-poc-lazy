@@ -1,0 +1,38 @@
+<div>
+  Angular Lazy Loaded C!
+  <div><a href="/angular_a">Go to Angular A</a></div>
+  <div><a href="/angular_b">Go to Angular B</a></div>
+  <div>Go to Angular C</div>
+  <div><a href="/angularjs_a">Go to Angular JS A</a></div>
+  <div><a href="/angularjs_b">Go to Angular JS B</a></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="ng-plus">
+  ** Angular AppComponent - using AngularJs Component below.
+  <br>
+  Counter: {{counter}}
+  <br>
+  two way binding going from parant to child is not working but reverse is working...
+  <br>
+  twoWay: <input [(ngModel)]="twoWay">
+  <br>
+  <angularjs-component [counter]="counter" (multiply)="multiplyCounter($event)"
+  [(twoWay)]="twoWay"
+  >
+  <br>
+  I am transcluded from parent Angular component
+  </angularjs-component>
+  <br>
+  <pre>To build for production:
+  change those flags in angular.json to:
+  aot: false,
+  buildOptimizer: false
+  Then just do 
+  ng build --prod
+  </pre>
+  <router-outlet></router-outlet> 
+  </div>

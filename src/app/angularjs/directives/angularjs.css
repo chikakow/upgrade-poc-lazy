@@ -1,0 +1,13 @@
+.red-font {
+  color: red;
+}
+
+.ng1 {
+  background-color: aqua;
+  margin: 30px;
+}
+
+.transclude {
+  background-color: lightpink;
+  padding: 15px;
+}

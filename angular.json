@@ -27,9 +27,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/angularjs/directives/angularjs.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/app/angularjs/directives/angularjs.component.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
