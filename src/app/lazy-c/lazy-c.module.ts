@@ -24,7 +24,7 @@ declare const requirejs: any;
 // angular.module(module.name).directive('appRoot', downgradeComponent({component: AppComponent}));
 angular
   .module(module.name)
-  .directive('appRoot', downgradeComponent({ component: LazyCComponent }));
+  .directive('router-outlet', downgradeComponent({ component: LazyCComponent }));
 
 @NgModule({
   declarations: [LazyCComponent, AngularJSWrapperComponent],
@@ -43,15 +43,22 @@ angular
 export class LazyCModule {
   // The constructor is called only once, so we bootstrap the application
   // only once, when we first navigate to the legacy part of the app.
-  constructor(private upgrade: UpgradeModule) {}
+  // constructor(private upgrade: UpgradeModule) {}
 
-  ngDoBootstrap() {
+  // ngDoBootstrap() {
     // requirejs(['angular', 'angularJsApp'], (angular, app) => {
     // console.log(angular);
     // setAngularJSGlobal(angular);
 
-    setUpLocationSync(this.upgrade);
-    this.upgrade.bootstrap(document.body, [module.name]);
-    //});
+    // setUpLocationSync(this.upgrade);
+    // this.upgrade.bootstrap(document.body, [module.name]);
+    // });
+  // }
+
+  // The constructor is called only once, so we bootstrap the application
+  // only once, when we first navigate to the legacy part of the app.
+  constructor(upgrade: UpgradeModule) {
+    upgrade.bootstrap(document.body, [module.name]);
+    setUpLocationSync(upgrade);
   }
 }
