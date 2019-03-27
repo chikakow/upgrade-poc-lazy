@@ -33,7 +33,6 @@
             "scripts": [
               "node_modules/angular/angular.min.js",
               "node_modules/angular-route/angular-route.min.js",
-              "src/app/angularjs/directives/angularjs.component.js",
               "node_modules/requirejs/require.js"
             ],
             "es5BrowserSupport": true
