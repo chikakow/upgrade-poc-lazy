@@ -1,10 +1,8 @@
-import 'angular';
-import 'angular-ui-router';
-
-declare const angular: any;
+(function () {
+  'use strict';
 
 
-export const module = angular.module('AngularJSApp', ['ui.router']);
+var module = angular.module('AngularJSApp', ['ui.router']);
 
 // Header
 module.component('ngjsHeader', {
@@ -65,7 +63,7 @@ module.component('lazyJsA', {
 });
 
 // 'notifyService',
-export function componentController(notifyService) {
+function componentController(notifyService) {
   this.counter = 1;
   this.notifyMessage = msg => {
     notifyService.notify(msg);
@@ -106,5 +104,5 @@ module.run($rootScope => {
   });
 });
 
-
+})();
 
