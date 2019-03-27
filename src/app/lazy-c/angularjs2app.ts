@@ -5,7 +5,7 @@ import { Timeouts } from 'selenium-webdriver';
 
 declare const angular: any;
 
-export const module = angular.module('AngularJSApp', ['ui.router']);
+export const module = angular.module('AngularJS2App', ['ui.router']);
 
 // Header
 module.component('ngjsHeader', {
@@ -13,9 +13,9 @@ module.component('ngjsHeader', {
   <div style="background-color: yellow">
         <div><a href="/angular_a">Go to Angular A</a></div>
         <div><a href="/angular_b">Go to Angular Lazy B</a></div>
-        <div><a href="/angular_c">Go to Angular Lazy C - had to comment requirejs r.js # line</a></div>
-        <div><a href="/lazyloaded_js/angularjs_a">Go to Angular JS Lazy A</a></div>
-        <div><a href="/lazyloaded_js/angularjs_b">Go to Angular JS Lazy B</a></div>
+        <div><a href="/angular_c">Go to Angular Lazy C - not working</a></div>
+        <div><a href="/angularjs_a">Go to Angular JS Lazy A</a></div>
+        <div><a href="/angularjs_b">Go to Angular JS B</a></div>
   </div>`
 });
 
@@ -81,14 +81,14 @@ module.config(($locationProvider, $stateProvider) => {
   $locationProvider.html5Mode(true);
 
   $stateProvider.state('angularjs_a', {
-    url: '/lazyloaded_js/angularjs_a',
+    url: '/angularjs_a',
     component: 'lazyJsA'
   });
 
   $stateProvider.state('angularjs_b', {
-    url: '/lazyloaded_js/angularjs_b',
+    url: '/angularjs_b',
     template: `
-        <div>AngularJS Lazy B!</div>
+        <div>AngularJS Non-Lazy B!</div>
         <ngjs-header></ngjs-header>
     `
   });

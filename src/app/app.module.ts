@@ -40,7 +40,7 @@ export class AngularAComponent {
       {path: 'angular_a', component: AngularAComponent},
       {path: 'angular_b', loadChildren: './lazy-b/lazy-b.module#LazyBModule'},
       {path: 'angular_c', loadChildren: './lazy-c/lazy-c.module#LazyCModule'},
-      {path: '', loadChildren: './angularjs/angularjs.module#AngularJSModule'}
+      {path: 'lazyloaded_js', loadChildren: './angularjs/angularjs.module#AngularJSModule'}
     ])
   ],
   providers: [],
