@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/angularjs/directives/angularjs.css"
+              "src/assets/angularjs.css"
             ],
             "scripts": [
               "node_modules/angular/angular.min.js",
